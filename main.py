@@ -87,7 +87,13 @@ def Developer(nombre_desarrollador : str):
             'Cantidad de juegos desarrollados: ': cantidad_juegos,
             'Porcentaje de ellos free: ': porcentaje_free
         }
-        return resultado
+
+        # Llamada a la función Developer
+        resultado_dict = Developer(nombre_desarrollador)
+
+        # Imprimir el resultado en formato de diccionario
+        return resultado_dict
+
     except Exception as e:
         return {"error": str(e)}
 
