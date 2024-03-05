@@ -6,7 +6,6 @@ from sklearn.metrics.pairwise import cosine_similarity
 from fastapi import FastAPI, Query
 from fastapi.responses import HTMLResponse
 
-
 app = FastAPI()
 
 # Importaion de datos
@@ -61,9 +60,6 @@ def presentacion():
     </html>
     '''
 
-
-
-
 ### correccion, funciones 0.1
 
 @app.get("/Developer")
@@ -85,12 +81,11 @@ def Developer(nombre_desarrollador):
         # Obtener el porcentaje de juegos gratuitos del desarrollador filtrado
         porcentaje_free = desarrollador_filtrado["Porcentaje de Juegos Gratuitos"].iloc[0]
         
-        resultado = {
-            "Nombre del desarrollador": nombre_desarrollador,
-            "Cantidad de juegos desarrollados: " : cantidad_juegos,
-            "Porcentaje de ellos free: ": porcentaje_free
-        }
-        return resultado
+        return {
+                "Nombre del desarrollador": nombre_desarrollador,
+                "Cantidad de juegos desarrollados: " : cantidad_juegos,
+                "Porcentaje de ellos free: ": porcentaje_free
+                }
     except Exception as e:
         return {"error": str(e)}
 
