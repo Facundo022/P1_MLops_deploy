@@ -6,7 +6,7 @@ from fastapi import FastAPI
 from sklearn.metrics.pairwise import cosine_similarity
 from fastapi import FastAPI, HTTPException, Response
 from fastapi.responses import HTMLResponse
-
+from fastapi import JSONResponse
 
 app = FastAPI()
 
