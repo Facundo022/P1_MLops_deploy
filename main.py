@@ -70,7 +70,7 @@ def Developer(nombre_desarrollador):
     """
     try:
         # Filtrar el DataFrame por el nombre del desarrollador
-        desarrollador_filtrado = df_developer[df_developer["developer"] == nombre_desarrollador]
+        desarrollador_filtrado = df_developer[df_developer["developer"] == str(nombre_desarrollador)]
         
         if desarrollador_filtrado.empty:
             return {"error": "No se encontró ningún desarrollador con ese nombre."}
@@ -93,8 +93,8 @@ def Developer(nombre_desarrollador):
 @app.get("/Userdata")
 def userdata(user_id : object):
     # Filtrar el DataFrame por user_id
-    usuario_filtrado = df_userdata[df_userdata['user_id'] == user_id]
-    
+    usuario_filtrado = df_userdata[df_userdata['user_id'] == str(user_id)]
+
     # Obtener la cantidad de dinero gastado por el usuario
     dinero_gastado = usuario_filtrado['total_price_por_usuario'].iloc[0]
     
