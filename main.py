@@ -22,6 +22,7 @@ df_Sentiment_Analysis = pd.read_parquet("data/sentiment_analysis.parquet")
 
 
 @app.get(path="/", response_class=HTMLResponse, tags=["Home"])
+@app.get("/presentacion")
 def presentacion():
     '''
     Genera una página de presentación HTML para la API Steam de consultas de videojuegos.
@@ -65,11 +66,7 @@ def presentacion():
 ### correccion, funciones 0.1
 
 @app.get("/Developer")
-def Developer(nombre_desarrollador : str):
-    """
-    ingresar nombre de desarrollador, 
-    muestra la Cantidad de items y porcentaje de contenido Free por año según empresa desarrolladora.
-    """
+def developer(nombre_desarrollador):
     try:
         # Filtrar el DataFrame por el nombre del desarrollador
         desarrollador_filtrado = df_developer[df_developer['developer'] == nombre_desarrollador]
@@ -88,13 +85,7 @@ def Developer(nombre_desarrollador : str):
             'Cantidad de juegos desarrollados: ': cantidad_juegos,
             'Porcentaje de ellos free: ': porcentaje_free
         }
-
-        # Llamada a la función Developer
-        resultado_dict = Developer(nombre_desarrollador)
-
-        # Imprimir el resultado en formato de diccionario
-        return resultado_dict
-
+        return resultado
     except Exception as e:
         return {"error": str(e)}
 
