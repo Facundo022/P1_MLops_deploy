@@ -10,15 +10,15 @@ from fastapi.responses import HTMLResponse
 app = FastAPI()
 
 # Importaion de datos
+df_developer = pd.read_parquet("data/developer.parquet")
+df_userdata = pd.read_parquet('data/userdata.parquet')
+df_best_developer = pd.read_parquet('data/UsersbestDeveloper.parquet')
 df_PlayTimeGenre = pd.read_parquet("data/play_time_genres.parquet")
 df_UserForGenre_parte_1 = pd.read_parquet("data/user_for_genre_part_1.parquet")
 df_UserForGenre_parte_2 = pd.read_parquet("data/user_for_genre_part_2.parquet")
 df_UsersRecommend = pd.read_parquet("data/UsersRecommend.parquet")
 df_UsersWorstDeveloper = pd.read_parquet("data/UsersWorstDeveloper.parquet")
 df_Sentiment_Analysis = pd.read_parquet("data/sentiment_analysis.parquet")
-df_developer = pd.read_parquet("data/developer.parquet")
-df_userdata = pd.read_parquet('data/userdata.parquet')
-df_best_developer = pd.read_parquet('data/UsersbestDeveloper.parquet')
 
 
 @app.get(path="/", response_class=HTMLResponse, tags=["Home"])
@@ -64,8 +64,11 @@ def presentacion():
 
 ### correccion, funciones 0.1
 
-@app.get("/developer")
-def developer(nombre_desarrollador):
+@app.get("/Developer")
+def Developer(nombre_desarrollador : str):
+    """
+    
+    """
     try:
         # Filtrar el DataFrame por el nombre del desarrollador
         desarrollador_filtrado = df_developer[df_developer['developer'] == nombre_desarrollador]
@@ -90,7 +93,7 @@ def developer(nombre_desarrollador):
 
 
 @app.get("/Userdata")
-def userdata(user_id):
+def userdata(user_id : object):
     # Filtrar el DataFrame por user_id
     usuario_filtrado = df_userdata[df_userdata['user_id'] == user_id]
     
