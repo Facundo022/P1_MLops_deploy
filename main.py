@@ -4,6 +4,7 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 from fastapi import FastAPI
 from sklearn.metrics.pairwise import cosine_similarity
+from fastapi import FastAPI, HTTPException, Response
 from fastapi.responses import HTMLResponse
 
 
@@ -85,7 +86,7 @@ def developer(nombre_desarrollador):
             "Cantidad de juegos desarrollados: " : cantidad_juegos,
             "Porcentaje de ellos free: ": porcentaje_free
         }
-        return resultado
+        return JSONResponse(content = resultado)
     except Exception as e:
         return {"error": str(e)}
 
