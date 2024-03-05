@@ -60,16 +60,6 @@ def presentacion():
         </body>
     </html>
     '''
-@app.get(
-    path="/developer",
-    description=""" <font color="green">
-                        INSTRUCCIONES<br>
-                        
-Haga clik en "Try it out".<br>
-Ingrese el Desarrollador en la caja de abajo.<br>
-Scrollear a "Resposes" para ver la cantidad de items y porcentaje de contenido Free por año según empresa de desarrollo.</font>""",
-tags=["Consultas Generales"],
-)
 
 
 ### correccion, funciones 0.1
