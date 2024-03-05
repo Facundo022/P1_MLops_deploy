@@ -67,7 +67,8 @@ def presentacion():
 @app.get("/Developer")
 def Developer(nombre_desarrollador : str):
     """
-    
+    ingresar nombre de desarrollador, 
+    muestra la Cantidad de items y porcentaje de contenido Free por año según empresa desarrolladora.
     """
     try:
         # Filtrar el DataFrame por el nombre del desarrollador
