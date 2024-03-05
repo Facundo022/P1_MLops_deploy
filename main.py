@@ -64,25 +64,30 @@ def presentacion():
 
 ### correccion, funciones 0.1
 
-
 @app.get("/developer")
-def developer( nombre_desarrollador):
-    
-    # Filtrar el DataFrame por el nombre del desarrollador
-    desarrollador_filtrado = df_developer[df_developer['developer'] == nombre_desarrollador]
-    
-    # Obtener la cantidad de juegos del desarrollador filtrado
-    cantidad_juegos = desarrollador_filtrado['Cantidad de Juegos por Developer'].iloc[0]
-    
-    # Obtener el porcentaje de juegos gratuitos del desarrollador filtrado
-    porcentaje_free = desarrollador_filtrado['Porcentaje de Juegos Gratuitos'].iloc[0]
-    
-    resultado = {
-        'Nombre del desarrollador': nombre_desarrollador,
-        'Cantidad de juegos desarrollados: ' : cantidad_juegos,
-        'Porcentaje de ellos free: ' : porcentaje_free
-    }
-    return resultado
+def developer(nombre_desarrollador):
+    try:
+        # Filtrar el DataFrame por el nombre del desarrollador
+        desarrollador_filtrado = df_developer[df_developer['developer'] == nombre_desarrollador]
+        
+        if desarrollador_filtrado.empty:
+            return {"error": "No se encontró ningún desarrollador con ese nombre."}
+        
+        # Obtener la cantidad de juegos del desarrollador filtrado
+        cantidad_juegos = desarrollador_filtrado['Cantidad de Juegos por Developer'].iloc[0]
+        
+        # Obtener el porcentaje de juegos gratuitos del desarrollador filtrado
+        porcentaje_free = desarrollador_filtrado['Porcentaje de Juegos Gratuitos'].iloc[0]
+        
+        resultado = {
+            'Nombre del desarrollador': nombre_desarrollador,
+            'Cantidad de juegos desarrollados: ': cantidad_juegos,
+            'Porcentaje de ellos free: ': porcentaje_free
+        }
+        return resultado
+    except Exception as e:
+        return {"error": str(e)}
+
 
 @app.get("/Userdata")
 def userdata(user_id):
