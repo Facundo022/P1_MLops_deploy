@@ -96,6 +96,9 @@ def Developer(nombre_desarrollador):
 
 @app.get("/Userdata")
 def userdata(user_id : object):
+    """
+    Devuelve cantidad de dinero gastado por el usuario, el porcentaje de recomendación y cantidad de items.
+    """
     # Filtrar el DataFrame por user_id
     usuario_filtrado = df_userdata[df_userdata['user_id'] == str(user_id)]
 
