@@ -83,13 +83,14 @@ def Developer(nombre_desarrollador):
         
         resultado = {
                 "Nombre del desarrollador": nombre_desarrollador,
-                "Cantidad de juegos desarrollados: " : cantidad_juegos,
-                "Porcentaje de ellos free: ": porcentaje_free
+                "Cantidad de juegos desarrollados: " : int(cantidad_juegos),
+                "Porcentaje de ellos free: ": round(float(porcentaje_free),2)
                     }
 
-        return resultado.to_dict(orient="index")
+        return resultado
     
     except Exception as e:
+
         return {"error": str(e)}
 
 
@@ -109,9 +110,9 @@ def userdata(user_id : object):
     
     resultados = {
         "El user_id: ": user_id,
-        "gasto en total: ": dinero_gastado,
-        "porcentaje de recomendacion": porcentaje_recomendacion,
-        "y compro en total:": cantidad_items
+        "gasto en total: ": int(dinero_gastado),
+        "porcentaje de recomendacion": round(float(porcentaje_recomendacion),2),
+        "y compro en total:": int(cantidad_items)
     }
     
     return resultados
