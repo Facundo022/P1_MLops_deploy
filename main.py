@@ -87,7 +87,7 @@ def Developer(nombre_desarrollador):
                 "Porcentaje de ellos free: ": porcentaje_free
                     }
 
-        return resultado.to_dict()
+        return resultado.to_dict(orient="index")
     
     except Exception as e:
         return {"error": str(e)}
